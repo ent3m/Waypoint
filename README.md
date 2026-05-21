@@ -1,7 +1,7 @@
 # Waypoint
 
-[![NuGet Version](https://img.shields.io/nuget/v/Waypoint.Avalonia?logo=nuget&label=NuGet&color=004880)](https://www.nuget.org/packages/Waypoint.Avalonia)
-[![NuGet Downloads](https://img.shields.io/nuget/dt/Waypoint.Avalonia?logo=nuget&label=Downloads)](https://www.nuget.org/packages/Waypoint.Avalonia)
+[![NuGet Version](https://img.shields.io/nuget/v/Ent3m.Waypoint?logo=nuget&label=NuGet&color=004880)](https://www.nuget.org/packages/Ent3m.Waypoint)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/Ent3m.Waypoint?logo=nuget&label=Downloads)](https://www.nuget.org/packages/Ent3m.Waypoint)
 [![Avalonia](https://img.shields.io/badge/Avalonia-12+-165BFF?logo=avaloniaui)](https://avaloniaui.net/)
 [![.NET](https://img.shields.io/badge/.NET-8+-512BD4)](https://dotnet.microsoft.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
@@ -47,9 +47,9 @@ public class HomeViewModel(INavigator navigator)
 
 ## Install
 
-[![NuGet](https://img.shields.io/nuget/v/Waypoint.Avalonia?logo=nuget&label=NuGet&color=004880)](https://www.nuget.org/packages/Waypoint.Avalonia/ "Download Waypoint from NuGet.org")
+[![NuGet](https://img.shields.io/nuget/v/Ent3m.Waypoint?logo=nuget&label=NuGet&color=004880)](https://www.nuget.org/packages/Ent3m.Waypoint/ "Download Waypoint from NuGet.org")
 ```
-dotnet add package Waypoint.Avalonia
+dotnet add package Ent3m.Waypoint
 ```
 **Requirements**: .NET 8+
 <br/>
