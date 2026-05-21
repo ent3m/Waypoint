@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Waypoint.Avalonia</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>ent3m</Authors>
+	<Title>Waypoint</Title>
+    <Description>A View-first, type-safe navigation framework for Avalonia with native DI support.</Description>
+    
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  
+    <PackageProjectUrl>https://github.com/ent3m/Waypoint</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ent3m/Waypoint</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+	  
+    <PackageReadmeFile>README-NUGET.md</PackageReadmeFile>
+    <PackageTags>avalonia;avaloniaui;dependencyinjection;mvvm;navigation;navigator</PackageTags>
+
+	<IncludeSymbols>true</IncludeSymbols>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+	<PackageReleaseNotes>First release of Waypoint.</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="12.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>

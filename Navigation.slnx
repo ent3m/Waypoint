@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Waypoint.SourceGenerators/Waypoint.SourceGenerators.csproj" />
+  <Project Path="Waypoint/Waypoint.csproj" />
+</Solution>
