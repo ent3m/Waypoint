@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <PackageId>Ent3m.Waypoint</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>ent3m</Authors>
 	<Title>Waypoint</Title>
     <Description>A View-first, type-safe navigation framework for Avalonia with native DI support.</Description>
@@ -25,7 +25,7 @@
 	<IncludeSymbols>true</IncludeSymbols>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
-	<PackageReleaseNotes>First release of Waypoint.</PackageReleaseNotes>
+	<PackageReleaseNotes>Fixed source generator not being included.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -37,6 +37,10 @@
     <ProjectReference Include="..\Waypoint.SourceGenerators\Waypoint.SourceGenerators.csproj"
                       OutputItemType="Analyzer"
                       ReferenceOutputAssembly="false" />
+    <None Include="..\Waypoint.SourceGenerators\bin\$(Configuration)\netstandard2.0\Waypoint.SourceGenerators.dll"
+          Pack="true"
+          PackagePath="analyzers/dotnet/cs"
+          Visible="false" />
     <None Include="README-NUGET.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 
