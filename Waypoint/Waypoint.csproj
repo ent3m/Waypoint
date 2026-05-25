@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <PackageId>Ent3m.Waypoint</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Authors>ent3m</Authors>
 	<Title>Waypoint</Title>
     <Description>A View-first, type-safe navigation framework for Avalonia with native DI support.</Description>
@@ -25,7 +25,7 @@
 	<IncludeSymbols>true</IncludeSymbols>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
-	<PackageReleaseNotes>Fixed source generator not being included.</PackageReleaseNotes>
+	<PackageReleaseNotes>Extend source generator to support window dialogs.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

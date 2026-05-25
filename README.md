@@ -160,6 +160,7 @@ await navigator.ShowDialogWindowAsync<AboutWindow, MainWindow>();
 // Dialog window with typed result and an owner
 var result = await navigator.ShowDialogWindowAsync<SaveWindow, MainWindow, SaveResult>();
 ```
+- *Tip*: Use [source generator](#source-generator) to automatically implement the plumbing required to call `Window.Close` from the ViewModel.
 
 ## Overlay Dialogs
 
@@ -176,10 +177,20 @@ Show a blocking modal dialog with typed result with `ShowDialogAsync<TView, TRes
 ```C#
 bool confirmed = await navigator.ShowDialogAsync<ConfirmDialog, bool>(parameter: "Delete this item?");
 ```
-- `TView` must implement `IDialogView<TResult>`. The dialog result is returned when the View fires `IDialogView<TResult>.CloseRequested`.
-<br/>
+- `TView` must implement `IDialogView<TResult>`. The dialog result is returned when the View fires `IDialogView.CloseRequested`.
+- *Tip*: Use [source generator](#source-generator) to automatically implement `IDialogView`.
 
-**Recommended**: Use source generator to implement `IDialogView` automatically by annotating a ViewModel's event of type `Action<TResult>` with the `[DialogResult(typeof(TView))]` attribute.
+### Theming
+The dialog overlay renders a semi-transparent layer behind the dialog content. Override the default color (`#99000000`) by defining the `WaypointDialogDimBrush` resource in your application.
+```xml
+<Application.Resources>
+    <SolidColorBrush x:Key="WaypointDialogDimBrush" Color="#CC000000" />
+</Application.Resources>
+```
+
+## Source Generator
+
+Annotate a ViewModel's event of type `Action<TResult>` with the `[DialogResult(typeof(TView))]` attribute.
 ```C#
 public partial class ConfirmDialogViewModel
 {
@@ -190,17 +201,11 @@ public partial class ConfirmDialogViewModel
     public void Cancel()  => CloseRequested?.Invoke(false);
 }
 ```
-- The generated code safely wires the ViewModel's event to the View's `IDialogView<TResult>.CloseRequested` event via `OnAttachedToLogicalTree` / `OnDetachedFromLogicalTree` to prevent memory leaks.
-<br/>
+- The generated code differs depending on the type of `TView`.
+- If `TView` is a `Window`, the generated code wires the ViewModel's event to call `Window.Close` via `OnOpened` / `OnClosed`.
+- Otherwise, it wires the ViewModel's event to the View's `IDialogView<TResult>.CloseRequested` event via `OnAttachedToLogicalTree` / `OnDetachedFromLogicalTree`.
 
-**Theming**: The dialog overlay renders a semi-transparent layer behind the dialog content. Override the default color (`#99000000`) by defining the `WaypointDialogDimBrush` resource in your application:
-```xml
-<Application.Resources>
-    <SolidColorBrush x:Key="WaypointDialogDimBrush" Color="#CC000000" />
-</Application.Resources>
-```
-
-## Source Generator Diagnostics
+### Diagnostics
 
 The `[DialogResult]` source generator ships with a Roslyn analyzer that reports errors at build time:
 

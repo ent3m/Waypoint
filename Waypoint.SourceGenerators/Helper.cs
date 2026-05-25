@@ -6,24 +6,41 @@ namespace Waypoint.SourceGenerators;
 internal static class Helper
 {
     /// <summary>
-    /// Determines whether the specified type represents an Avalonia StyledElement by checking its inheritance hierarchy.
+    /// Determines whether the type derives from <c>Avalonia.StyledElement</c>.
+    /// </summary>
+    /// <returns>true if the type derives from <c>Avalonia.StyledElement</c>; otherwise, false.</returns>
+    internal static bool IsStyledElement(INamedTypeSymbol type)
+        => DerivesFrom(type, "Avalonia.StyledElement");
+
+    /// <summary>
+    /// Determines whether the type derives from <c>Avalonia.Controls.Window</c>.
+    /// </summary>
+    /// <returns>true if the type derives from <c>Avalonia.Controls.Window</c>; otherwise, false.</returns>
+    internal static bool IsWindow(INamedTypeSymbol type)
+        => DerivesFrom(type, "Avalonia.Controls.Window");
+
+    /// <summary>
+    /// Determines whether the type derives from a specified type by checking its inheritance hierarchy.
     /// </summary>
     /// <remarks>
-    /// The check is performed by traversing the base types of the provided symbol.</remarks>
-    /// <returns>true if the type derives from Avalonia StyledElement base type; otherwise, false.</returns>
-    internal static bool IsStyledElement(INamedTypeSymbol type)
+    /// The check starts at the immediate base type, not the type itself. This is intentional: callers always pass
+    /// user-defined types, which can never be a library-owned type directly.
+    /// </remarks>
+    /// <param name="type">The user-defined type to inspect.</param>
+    /// <param name="fullyQualifiedTypeName">The fully qualified metadata name of the target base type.</param>
+    /// <returns>true if the type derives from the specified type; otherwise, false.</returns>
+    internal static bool DerivesFrom(INamedTypeSymbol type, string fullyQualifiedTypeName)
     {
         var currentBase = type.BaseType;
         while (currentBase != null)
         {
-            if (currentBase.ToDisplayString() == AvaloniaStyledElement)
+            if (currentBase.ToDisplayString() == fullyQualifiedTypeName)
                 return true;
 
             currentBase = currentBase.BaseType;
         }
         return false;
     }
-    private const string AvaloniaStyledElement = "Avalonia.StyledElement";
 
     /// <summary>
     /// Ensure void-return, single-parameter delegate signature (e.g., Action<T>)
