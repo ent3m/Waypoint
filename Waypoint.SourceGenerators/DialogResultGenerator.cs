@@ -28,7 +28,7 @@ public sealed class DialogResultGenerator : IIncrementalGenerator
                 namespace {{AttributeNamespace}}
                 {
                     /// <summary>
-                    /// Applied to an event in a ViewModel class to produce dialog close-handling plumbing on the paired View.
+                    /// Applied to an event in a ViewModel class to produce dialog-close-handling plumbing on the paired View.
                     /// <para>
                     /// The generated code depends on the View's base class:
                     /// <list type="bullet">
@@ -47,16 +47,23 @@ public sealed class DialogResultGenerator : IIncrementalGenerator
                     /// </list>
                     /// </para>
                     /// </summary>
-                    /// <param name="viewType">
-                    /// The View type on which the partial class will be generated.
-                    /// The View must be declared as <c>partial</c> and inherit from
-                    /// <c>Avalonia.StyledElement</c>.
-                    /// </param>
                     [Microsoft.CodeAnalysis.Embedded]
                     [AttributeUsage(AttributeTargets.Event, Inherited = false, AllowMultiple = false)]
                     internal sealed class {{AttributeName}} : Attribute
                     {
+                        /// <summary>
+                        /// The View type on which the partial class will be generated.
+                        /// </summary>
                         public Type ViewType { get; }
+
+                        /// <summary>
+                        /// Create a new instance of <see cref="{{AttributeName}}"/>.
+                        /// </summary>
+                        /// <param name="viewType">
+                        /// The View type on which the partial class will be generated.
+                        /// The View must be declared as <c>partial</c> and inherit from
+                        /// <c>Avalonia.StyledElement</c>.
+                        /// </param>
                         public {{AttributeName}}(Type viewType)
                         {
                             ViewType = viewType;

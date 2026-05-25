@@ -5,5 +5,8 @@ namespace Waypoint;
 /// </summary>
 public interface IDialogView<TResult>
 {
+    /// <summary>
+    /// Raised to signal that the dialog should close with the given result.
+    /// </summary>
     event Action<TResult>? CloseRequested;
 }

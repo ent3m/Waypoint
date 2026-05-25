@@ -4,10 +4,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Waypoint;
 
+/// <summary>
+/// Extension methods for registering the Waypoint navigation framework with <see cref="Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+/// </summary>
 public static class NavigationServiceExtensions
 {
     /// <summary>
-    /// Registers the navigation system and its View-to-ViewModel mappings in the service collection.
+    /// Registers the navigation framework and its View-to-ViewModel mappings in the service collection.
     /// </summary>
     /// <param name="services">The service collection to configure.</param>
     /// <param name="applicationLifetime">The current application lifetime used by navigation.</param>
